@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import MetaMaskConnect from './components/MetaMaskConnect.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [token, setToken] = useState('');
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
+
+    const handleConnect = async(token) => {
+        try {
+            setToken(token);
+            localStorage.setItem('token', token);
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    };
+
+    return (
+        <div className="App">
+            {token ? (
+                <p>Welcome, you are logged in!</p>
+            ) : (
+                <MetaMaskConnect onConnect={handleConnect} />
+            )}
+        </div>
+    );
+};
 
 export default App;
