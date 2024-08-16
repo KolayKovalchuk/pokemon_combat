@@ -1,18 +1,35 @@
 {
     "version": "0.2.0",
     "configurations": [
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Launch Express Server",
-        "program": "${workspaceFolder}/server/bin/www",
-        "args": [],
-        "cwd": "${workspaceFolder}/server",
-        "envFile": "${workspaceFolder}/server/.env",
-        "outputCapture": "std",
-        "console": "integratedTerminal",
-        "restart": true
-      }
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Express Server",
+            "program": "${workspaceFolder}/server/bin/www",
+            "args": [],
+            "cwd": "${workspaceFolder}/server",
+            "envFile": "${workspaceFolder}/server/.env",
+            "outputCapture": "std",
+            "console": "integratedTerminal",
+            "restart": true
+        },
+        {
+            "name": "Launch React app",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3001",
+            "webRoot": "${workspaceRoot}/client/src",
+            "preLaunchTask": "Start React development server",
+            // "postDebugTask": "terminateAllProcesses"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "React and Express Server",
+            "configurations": [
+                "Launch Express Server",
+                "Launch React app"
+            ]
+        }
     ]
-  }
-  
+}
