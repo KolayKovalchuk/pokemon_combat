@@ -1,6 +1,7 @@
 import express from 'express'
 import Pokemon from '../models/Pokemon.js';
 import PokemonType from '../models/PokemonType.js';
+
 const router = express.Router();
 
 router.get('/types', async function(req, res, next) {

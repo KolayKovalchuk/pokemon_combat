@@ -46,8 +46,14 @@ const RadarChart = ({ data, labels, getTooltipLabel }) => {
                 suggestedMin: 0,
                 suggestedMax: 100,
                 ticks: {
-                    stepSize: 40
+                    stepSize: 40,
                 },
+                pointLabels: {
+                    font: {
+                        size: 12,
+                        weight: 'bold'
+                    }
+                }
             }
         },
         plugins: {

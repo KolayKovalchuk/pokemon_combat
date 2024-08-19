@@ -3,6 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import pokemonRouter from './routes/pokemon.js';
+import combatRouter from './routes/combat.js';
 import metamaskAuthRouter from './routes/metamask-auth.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -30,5 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', metamaskAuthRouter);
 app.use('/pokemon', authMiddleware, pokemonRouter);
+app.use('/combat', authMiddleware, combatRouter);
 
 export default app;

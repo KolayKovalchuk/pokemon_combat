@@ -9,7 +9,7 @@ import useLoadPokemonList from './useLoadPokemonList.js';
 import useInfiniteScroll from '../shared/useInfiniteScroll.js';
 
 
-function PokemonList() {
+function PokemonList({ onCardClick }) {
     const [typeFilter, setTypeFilter] = useState([])
     const debouncedSetTypeFilter = useDebouncedCallback((typeFilter) => setTypeFilter(typeFilter), 500)
 
@@ -37,10 +37,10 @@ function PokemonList() {
                     ></PokemonFilter>
                     {
                         isLoading
-                            ? <Loader size={150} />
+                            ? <Loader/>
                             : <>
                                 {pokemonList.length > 0 ? (
-                                    renderCardList(visibleItems, scrollRef, isScrollLoading)
+                                    renderCardList(visibleItems, scrollRef, isScrollLoading, onCardClick)
                                 ) : (
                                     <EmptyMessage />
                                 )}
@@ -52,7 +52,7 @@ function PokemonList() {
     );
 };
 
-function renderCardList(pokemonList, scrollRef, isScrollLoading) {
+function renderCardList(pokemonList, scrollRef, isScrollLoading, onCardClick) {
     return (
         <Box
             display="flex"
@@ -77,12 +77,15 @@ function renderCardList(pokemonList, scrollRef, isScrollLoading) {
                                 transform: 'scale(1.04)',
                             }
                         }}
+                        onClick={() => {
+                            onCardClick(pokemon)
+                        }}
                     >
                         <PokemonCard pokemon={pokemon}></PokemonCard>
                     </Box>
                 ))
             }
-            { isScrollLoading ? <Loader size={150} /> : null }
+            { isScrollLoading ? <Loader/> : null }
         </Box>
     )
 }

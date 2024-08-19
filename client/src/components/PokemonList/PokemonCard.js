@@ -29,7 +29,7 @@ function PokemonCard({ pokemon }) {
     
     return (
         <Grow in={true}>
-            <Card sx={{ maxWidth: 345, minWidth: 170 }}>
+            <Card sx={{ maxWidth: 220, minWidth: 170, maxHeight: 500 }}>
                 <CardContent>
                     <CardHeader title={pokemon.name.english} sx={{ padding: '0' }}></CardHeader>
 
@@ -49,30 +49,6 @@ function PokemonCard({ pokemon }) {
                             alt={pokemon.name.english}
                         />
                     </Box>
-
-                    {/* <Box mt={2}>
-                        <Typography variant="subtitle1" color="text.secondary">
-                            Pokemon Stats:
-                        </Typography>
-                        <Typography variant="body2">
-                            HP: {pokemon.base.hp}
-                        </Typography>
-                        <Typography variant="body2">
-                            Attack: {pokemon.base.attack}
-                        </Typography>
-                        <Typography variant="body2">
-                            Defense: {pokemon.base.defense}
-                        </Typography>
-                        <Typography variant="body2">
-                            Special Attack: {pokemon.base.spAttack}
-                        </Typography>
-                        <Typography variant="body2">
-                            Special Defense: {pokemon.base.spDefense}
-                        </Typography>
-                        <Typography variant="body2">
-                            Speed: {pokemon.base.speed}
-                        </Typography>
-                    </Box> */}
 
                     <RadarChart data={data} labels={labels} getTooltipLabel={getTooltipLabel}/>
                 </CardContent>

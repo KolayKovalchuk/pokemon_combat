@@ -16,7 +16,7 @@ function PokemonFilter({ onTypeChanged, onNameChanged }) {
         >
             {
                 isLoading ?
-                    <Loader size={50} />
+                    <Loader/>
                     : <>
                         <Box flexGrow={1} bgcolor='white' marginRight={'8px'}><SearchInput onSearch={onNameChanged} /></Box>
                         <MultipleSelectChip flexGrow={2} items={typeNameList} onSelect={onTypeChanged} label='Type'></MultipleSelectChip>

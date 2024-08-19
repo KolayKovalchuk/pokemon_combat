@@ -44,14 +44,20 @@ const useInfiniteScroll = (items, itemsPerPage = 50) => {
 
 
     useEffect(() => {
-        if (!items.length || items.length <= itemsPerPage) {
+        if ((!items.length && visibleItems.length)
+            || (items.length && items.length <= itemsPerPage)) {
             setVisibleItems(items)
         }
 
         if (items.length && !visibleItems.length) {
             loadMoreItems();
         }
-    }, [loadMoreItems, itemsPerPage, items, visibleItems.length]);
+    }, [loadMoreItems, itemsPerPage, items, visibleItems]);
+
+    useEffect(() => {
+        setVisibleItems([])
+        loadMoreItems();
+    }, [loadMoreItems, items]);
 
     return { scrollRef, visibleItems, isLoading };
 };
