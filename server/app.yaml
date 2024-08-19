@@ -1,0 +1,9 @@
+runtime: nodejs20
+service: api  # Change this to your desired service name
+env_variables:  # Optional: Add environment variables
+  NODE_ENV: production
+  MONGO_URI: 'mongodb+srv://vercel-admin-user:WJkruHTlLfiWRP1f@cluster0.qx8aidc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+  JWT_SECRET: 'super JWT_SECRET'
+handlers:
+  - url: /.*
+    script: auto

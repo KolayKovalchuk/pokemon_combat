@@ -10,6 +10,7 @@ import { AuthContextProvider } from './context/authContext.js';
 const queryClient = new QueryClient();
 
 const App = () => {
+    console.log('REACT_APP_POKEMON_API_URL', process.env.REACT_APP_POKEMON_API_URL)
     const [token, setToken] = useState('');
     const [userAddress, setUserAddress] = useState('');
 

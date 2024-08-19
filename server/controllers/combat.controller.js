@@ -1,4 +1,4 @@
-import Combat from '../models/combat.js';
+import Combat from '../models/Combat.js';
 import Effectiveness from '../models/Effectiveness.js';
 import User from '../models/User.js';
 import { getAttackLog, getFinishedLog, getInitCombatLog, getRandomElement } from './helpers/combat.helpers.js';
