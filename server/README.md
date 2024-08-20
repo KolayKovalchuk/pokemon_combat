@@ -6,3 +6,4 @@ App key feature:
      - pokemon filter list implemented with infinite scroll
      - for each combat creates room in socket romm and process combat throuhgt it
      - opponent choosed by server based on type of player pokemon
+     - deployed as app engine app on google cloud platform
