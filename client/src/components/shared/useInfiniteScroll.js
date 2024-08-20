@@ -55,8 +55,10 @@ const useInfiniteScroll = (items, itemsPerPage = 50) => {
     }, [loadMoreItems, itemsPerPage, items, visibleItems]);
 
     useEffect(() => {
-        setVisibleItems([])
-        loadMoreItems();
+        if (visibleItems.length) {
+            setVisibleItems([])
+            loadMoreItems();
+        }
     }, [loadMoreItems, items]);
 
     return { scrollRef, visibleItems, isLoading };
